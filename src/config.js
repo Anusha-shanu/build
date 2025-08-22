@@ -1,5 +1,7 @@
-// const API_BASE_URL = "http://127.0.0.1:8000";
-//const API_BASE_URL = "http://localhost:5000";
+// src/config.js
 
-const API_BASE_URL = "https://my-mentor-rbkh.onrender.com";
-export default API_BASE_URL;
+// 🔹 Backend API (Render server)
+export const API_BASE_URL = "https://my-mentor-rbkh.onrender.com";
+
+// 🔹 Google Gemini API Key (testing only, replace later)
+export const GEMINI_API_KEY = "AIzaSyBvCFI8_bjtTpzfF1xeux1OqnMQ6wi8frM";
