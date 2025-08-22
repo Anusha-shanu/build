@@ -3,8 +3,7 @@ import React, { useMemo, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import ChatSidebar from "../components/ChatSidebar";
-import { API_BASE_URL, GEMINI_API_KEY } from "../config"; // ✅ fixed import
-
+import { GEMINI_API_KEY } from "../config"; // ✅ only Gemini key needed here
 
 const makeId = () => Math.random().toString(36).slice(2, 10);
 
@@ -39,10 +38,10 @@ export default function ChatPage({ user }) {
 
     try {
       setLoading(true);
-      // ✅ Call Gemini API
+      // ✅ Call Gemini API safely
       const resp = await fetch(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
-          API_BASE_URL,
+          GEMINI_API_KEY,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
