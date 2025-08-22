@@ -2,7 +2,7 @@
 import React from "react";
 
 export default function ChatSidebar({
-  chats,
+  chats = [], // ✅ default empty array
   selectedChatId,
   onNewChat,
   onSelectChat,
@@ -50,52 +50,58 @@ export default function ChatSidebar({
 
       {/* Chat List */}
       <div style={{ flex: 1, overflowY: "auto", padding: 8 }}>
-        {chats.map((chat) => (
-          <div
-            key={chat.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 10px",
-              marginBottom: 6,
-              borderRadius: 8,
-              cursor: "pointer",
-              background:
-                chat.id === selectedChatId ? "#eaf3ff" : "transparent",
-            }}
-          >
-            {/* Chat title (click to open) */}
-            <span
-              onClick={() => onSelectChat(chat.id)}
+        {Array.isArray(chats) && chats.length > 0 ? (
+          chats.map((chat) => (
+            <div
+              key={chat.id}
               style={{
-                flex: 1,
-                fontSize: 14,
-                color: "#333",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {chat.title}
-            </span>
-
-            {/* Delete button */}
-            <button
-              onClick={() => onDeleteChat(chat.id)}
-              style={{
-                marginLeft: 8,
-                border: "none",
-                background: "transparent",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "8px 10px",
+                marginBottom: 6,
+                borderRadius: 8,
                 cursor: "pointer",
-                color: "#888",
+                background:
+                  chat.id === selectedChatId ? "#eaf3ff" : "transparent",
               }}
-              title="Delete chat"
             >
-              🗑️
-            </button>
+              {/* Chat title (click to open) */}
+              <span
+                onClick={() => onSelectChat(chat.id)}
+                style={{
+                  flex: 1,
+                  fontSize: 14,
+                  color: "#333",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {chat.title}
+              </span>
+
+              {/* Delete button */}
+              <button
+                onClick={() => onDeleteChat(chat.id)}
+                style={{
+                  marginLeft: 8,
+                  border: "none",
+                  background: "transparent",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+                title="Delete chat"
+              >
+                🗑️
+              </button>
+            </div>
+          ))
+        ) : (
+          <div style={{ color: "#777", fontSize: 14, textAlign: "center", marginTop: 20 }}>
+            No chats yet. Start a new one!
           </div>
-        ))}
+        )}
       </div>
     </aside>
   );

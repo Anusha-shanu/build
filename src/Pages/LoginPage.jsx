@@ -2,6 +2,7 @@
 import React from "react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
+import myLogo from "../mymentor_logo.jpg"; // adjust path if inside /assets
 
 export default function LoginPage() {
   const handleGoogleLogin = async () => {
@@ -16,12 +17,13 @@ export default function LoginPage() {
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100">
       <div className="p-10 bg-white rounded-2xl shadow-2xl w-full max-w-md text-center">
+        
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <img
-            src="/logo.png" // ✅ Place generated logo here
-            alt="My Mentor"
-            className="w-24 h-24 rounded-full shadow-lg border-2 border-purple-300"
+            src={myLogo}
+            alt="My Mentor Logo"
+            className="w-28 h-28 rounded-full shadow-lg border-2 border-purple-300"
           />
         </div>
 
@@ -33,19 +35,12 @@ export default function LoginPage() {
           Joyful Journeys from Books to Brilliance ✨
         </p>
 
-        {/* Google Login Button */}
+        {/* Clean Google Login Button (no Google logo) */}
         <button
           onClick={handleGoogleLogin}
-          className="flex items-center justify-center gap-3 w-full py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition shadow-sm"
+          className="w-full py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition shadow-sm text-gray-700 font-medium"
         >
-          <img
-            src="https://www.svgrepo.com/show/355037/google.svg"
-            alt="Google"
-            className="w-6 h-6"
-          />
-          <span className="text-gray-700 font-medium">
-            Sign in with Google
-          </span>
+          Sign in with Google
         </button>
       </div>
     </div>
