@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import Loginpage from "./pages/Loginpage";
-import Chatpage from "./pages/Chatpage";
+import LoginPage from "./pages/LoginPage";
+import ChatPage from "./pages/ChatPage";
 
 export default function App() {
   const [user, setUser] = useState(undefined); // undefined = loading, null = logged out
@@ -23,11 +23,11 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          element={user ? <Chatpage user={user} /> : <Navigate to="/login" />}
+          element={user ? <ChatPage user={user} /> : <Navigate to="/login" />}
         />
         <Route
           path="/login"
-          element={!user ? <Loginpage /> : <Navigate to="/" />}
+          element={!user ? <LoginPage /> : <Navigate to="/" />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

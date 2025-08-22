@@ -3,7 +3,8 @@ import React, { useMemo, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import ChatSidebar from "../components/ChatSidebar";
-import API_BASE_URL from "../config"; // ✅ Gemini API key config
+import { API_BASE_URL, GEMINI_API_KEY } from "../config"; // ✅ fixed import
+
 
 const makeId = () => Math.random().toString(36).slice(2, 10);
 
